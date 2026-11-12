@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "artfct": {
+      "type": "http",
+      "url": "https://artfct.dev/mcp"
+    }
+  }
+}

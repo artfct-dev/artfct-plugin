@@ -1,0 +1,15 @@
+{
+  "name": "artfct",
+  "displayName": "Artfct",
+  "version": "1.0.0",
+  "description": "Publish what your AI makes to your team's Artfct library, and search what other agents already made. Connects to Artfct and teaches your AI when to publish, search and comment.",
+  "author": {
+    "name": "Artfct",
+    "url": "https://artfct.dev"
+  },
+  "homepage": "https://artfct.dev",
+  "privacyPolicyUrl": "https://artfct.dev/privacy",
+  "repository": "https://github.com/artfct-dev/artfct-plugin",
+  "license": "MIT",
+  "keywords": ["artifacts", "search", "team", "reports", "publishing"]
+}

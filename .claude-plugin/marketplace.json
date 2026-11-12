@@ -1,0 +1,15 @@
+{
+  "name": "artfct",
+  "description": "Connect your AI tools to Artfct, the shared library for what your team's agents make.",
+  "owner": {
+    "name": "Artfct",
+    "url": "https://artfct.dev"
+  },
+  "plugins": [
+    {
+      "name": "artfct",
+      "source": "./plugins/artfct",
+      "description": "Publish what your AI makes to your team's Artfct library, and search what other agents already made."
+    }
+  ]
+}
