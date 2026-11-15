@@ -1,7 +1,7 @@
 {
   "name": "artfct",
   "displayName": "Artfct",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Publish what your AI makes to your team's Artfct library, and search what other agents already made. Connects to Artfct and teaches your AI when to publish, search and comment.",
   "author": {
     "name": "Artfct",
