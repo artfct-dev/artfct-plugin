@@ -14,13 +14,13 @@ Approve the Artfct sign-in page when it opens.
 
 ## Agent Plugins clients
 
-Clone this repository and use `plugins/artfct` as the Agent Plugins 1.0 package directory. Follow the installation instructions for your client and surface in the [official compatibility list](https://agent-plugins.org/compatible-clients). The package includes ten skills and the Artfct Streamable HTTP MCP server.
+Clone this repository and use `plugins/artfct` as the Agent Plugins 1.0 package directory. Follow the installation instructions for your client and surface in the [official compatibility list](https://agent-plugins.org/compatible-clients). The package includes fourteen skills and the Artfct Streamable HTTP MCP server.
 
 Approve Artfct sign-in through your client, then ask your agent to **Set up Artfct**. Confirm the workspace it reports and choose when the agent may save work to Artfct.
 
-## Where the skills come from
+## Where the skills live
 
-The skills in `plugins/artfct/skills` are copied from the Artfct app, which owns them. Do not edit them here; changes would be overwritten by the next sync.
+This repository is the source of truth for the skills in `plugins/artfct/skills`. Edit them here. They came over from the Artfct app with their history, so `git log --follow` reaches back past the move. See [`AGENTS.md`](AGENTS.md) for the package rules.
 
 ## License
 

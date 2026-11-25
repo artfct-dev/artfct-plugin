@@ -19,7 +19,13 @@ Then ask for work as usual. Ask it to publish a report to Artfct, or ask what th
 
 ## What it connects to
 
-The plugin adds one remote server, `https://artfct.dev/mcp`, and six skills: `artfct`, `artfct-publish`, `artfct-search`, `artfct-collaborate`, `artfct-data` and `onboard`. It runs no commands on your computer and installs nothing else.
+The plugin adds one remote server, `https://artfct.dev/mcp`, and fourteen skills:
+
+- **Core:** `onboard`, `artfct`, `artfct-publish`, `artfct-search`, `artfct-collaborate` and `artfct-data`
+- **Templates:** `artfct-templates`, `artfct-kanban`, `artfct-team-wiki` and `artfct-announcements`
+- **Formats:** `artfct-context-post`, `artfct-team-doc`, `artfct-handoff` and `presentation`
+
+It runs no commands on your computer and installs nothing else.
 
 ## Data
 
