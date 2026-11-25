@@ -1,6 +1,6 @@
 # Artfct plugin
 
-This repo is the Artfct plugin. It is one package directory that loads in two formats:
+This repo is the Artfct plugin. The repo root is the package, and it loads in two formats:
 
 - **Agent Plugins 1.0.0** for Codex, Cursor, VS Code, GitHub Copilot, OpenClaw, Hermes and the other [compatible clients](https://agent-plugins.org/compatible-clients).
 - **The Claude plugin format** for Claude Code, the Claude app, Cowork and Grok Build, through the marketplace in `.claude-plugin/marketplace.json`.
@@ -10,16 +10,20 @@ This repo owns the skills. Edit them here, not in the Artfct app.
 ## Layout
 
 ```text
-.claude-plugin/marketplace.json     Claude marketplace (points at ./plugins/artfct)
-plugins/artfct/                     the package root
-├── plugin.json                     Agent Plugins manifest
-├── mcp.json                        Agent Plugins MCP config (streamable-http)
-├── .claude-plugin/plugin.json      Claude manifest
-├── .mcp.json                       Claude MCP config (type: http)
-├── skills/<name>/SKILL.md          shared by both formats
-├── README.md                       user-facing: what it does, what data it sends
-└── LICENSE
+plugin.json                         Agent Plugins manifest
+mcp.json                            Agent Plugins MCP config (streamable-http)
+.claude-plugin/plugin.json          Claude manifest
+.claude-plugin/marketplace.json     Claude marketplace (source "./", this repo)
+.claude-plugin/icon.png             Claude icon
+.mcp.json                           Claude MCP config (type: http)
+skills/<name>/SKILL.md              shared by both formats
+assets/artfct-logo.svg              logo for the README
+README.md                           user-facing: install, what it does, what data it sends
+AGENTS.md, CLAUDE.md                these rules
+LICENSE
 ```
+
+The package sits at the repo root on purpose. Clients that install straight from a git URL, such as Hermes, look for `plugin.json` at the root of the repository. Codex, OpenClaw and Claude find the plugin through `.claude-plugin/marketplace.json`, whose `source` is `./`. Do not move the package into a subfolder.
 
 Keep `.claude-plugin/` and `.mcp.json` where they are. Claude finds them only at those paths. Moving them into a reverse-domain folder breaks the Claude install.
 
@@ -28,7 +32,7 @@ Keep `.claude-plugin/` and `.mcp.json` where they are. Claude finds them only at
 - **Keep both manifests in step.** `version`, `description`, `author`, `homepage`, `repository`, `license` and `keywords` match in `plugin.json` and `.claude-plugin/plugin.json`. The server URL matches in `mcp.json` and `.mcp.json`.
 - **Keep `plugin.json` closed.** Only fields from the [1.0.0 manifest schema](https://agent-plugins.org/schemas/1.0.0/plugin.schema.json). Claude-only fields such as `displayName` and `privacyPolicyUrl` go only in `.claude-plugin/plugin.json`. Client-specific behavior goes under `extensions` with a reverse-domain key.
 - **Match spec versions.** The `$schema` in `plugin.json` and `mcp.json` name the same Agent Plugins version.
-- **Stay inside the package.** Every file the plugin uses lives under `plugins/artfct/`. No symlinks out of it, and no `../` paths.
+- **Stay inside the package.** Every file the plugin uses lives in this repo. No symlinks out of it, and no `../` paths.
 - **Skills are flat.** Each skill is `skills/<name>/SKILL.md`, exactly one level down. Its frontmatter has a `name` equal to the directory name and a non-empty `description` ([Agent Skills spec](https://agentskills.io/specification)). Starters and references sit next to it in `assets/` and `references/`.
 - **No local runtime.** The plugin runs no commands and needs no Node, Python or binaries on the person's computer. That is why `artfct-init` is not here. The only MCP server is the hosted `https://artfct.dev/mcp`.
 - **Skills defer to the server.** The `artfct-{publish,search,collaborate,data}` skills mirror the server's `get_guidance` topics word for word. The `onboard` skill only drives the server's onboarding steps, so the `host` values it names must be ones the server accepts. Change the server guidance first, then the skill here.
@@ -81,23 +85,22 @@ A conforming client enforces the list below on this package. It is the [client c
 | Clients may support stdio only | Our server is `streamable-http`. A stdio-only client loads the skills without the tools. Older OpenClaw builds did this. |
 | No schema fetch at load time | The `$schema` URL must be the exact canonical 1.0.0 identifier, not a mirror or a `latest` alias. |
 | Matching versions required | Bump `plugin.json` and `mcp.json` `$schema` together when targeting a new spec version. |
-| Package boundary enforced | A symlink or path that resolves outside `plugins/artfct/` fails the load. |
+| Package boundary enforced | A symlink or path that resolves outside the repo fails the load. |
 
 ## Validate before a release
 
 ```sh
 # Claude format
-claude plugin validate plugins/artfct
 claude plugin validate .
 
 # Agent Plugins format: both documents against the canonical 1.0.0 schemas
 npx -y ajv-cli@5 validate --spec=draft2020 --strict=false \
-  -s <(curl -s https://agent-plugins.org/schemas/1.0.0/plugin.schema.json) -d plugins/artfct/plugin.json
+  -s <(curl -s https://agent-plugins.org/schemas/1.0.0/plugin.schema.json) -d plugin.json
 npx -y ajv-cli@5 validate --spec=draft2020 --strict=false \
-  -s <(curl -s https://agent-plugins.org/schemas/1.0.0/mcp.schema.json) -d plugins/artfct/mcp.json
+  -s <(curl -s https://agent-plugins.org/schemas/1.0.0/mcp.schema.json) -d mcp.json
 
 # Skills: name matches the directory, description is present
-for f in plugins/artfct/skills/*/SKILL.md; do
+for f in skills/*/SKILL.md; do
   d=$(basename "$(dirname "$f")")
   grep -q "^name: $d$" "$f" && grep -q '^description: .' "$f" || echo "bad frontmatter: $f"
 done
@@ -108,5 +111,5 @@ Then install from this checkout in at least one Agent Plugins client (Codex CLI 
 ## Releasing
 
 1. Bump `version` in both manifests.
-2. Update the skill list in `plugins/artfct/README.md` if skills were added or removed.
+2. Update the skill list in `README.md` if skills were added or removed.
 3. Merge to `main` and tag `vX.Y.Z`. The Claude marketplace reads `main`. Update any other listings that pin a version.
