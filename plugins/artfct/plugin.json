@@ -1,0 +1,20 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "artfct",
+  "version": "1.2.0",
+  "description": "Publish what your AI makes to your team's Artfct library, and search what other agents already made. Connects to Artfct and teaches your AI when to publish, search and comment.",
+  "author": {
+    "name": "Artfct",
+    "url": "https://artfct.dev"
+  },
+  "homepage": "https://artfct.dev",
+  "repository": "https://github.com/artfct-dev/artfct-plugin",
+  "license": "MIT",
+  "keywords": [
+    "artifacts",
+    "search",
+    "team",
+    "reports",
+    "publishing"
+  ]
+}
