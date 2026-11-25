@@ -1,4 +1,4 @@
-# Artfct plugin
+# Contributing to the Artfct plugin
 
 This repo is the Artfct plugin. The repo root is the package, and it loads in two formats:
 
@@ -19,11 +19,13 @@ mcp.json                            Agent Plugins MCP config (streamable-http)
 skills/<name>/SKILL.md              shared by both formats
 assets/artfct-logo.svg              logo for the README
 README.md                           user-facing: install, what it does, what data it sends
-AGENTS.md, CLAUDE.md                these rules
+CONTRIBUTING.md                     these rules
 LICENSE
 ```
 
 The package sits at the repo root on purpose. Clients that install straight from a git URL, such as Hermes, look for `plugin.json` at the root of the repository. Codex, OpenClaw and Claude find the plugin through `.claude-plugin/marketplace.json`, whose `source` is `./`. Do not move the package into a subfolder.
+
+Everything in the repo ships to users, because the repo is the package. Do not add `AGENTS.md`, `CLAUDE.md` or other files that agent clients load as instructions: a client that installs the plugin could read them as instructions for its user's project. Contributor notes go in this file.
 
 Keep `.claude-plugin/` and `.mcp.json` where they are. Claude finds them only at those paths. Moving them into a reverse-domain folder breaks the Claude install.
 

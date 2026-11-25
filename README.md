@@ -29,6 +29,8 @@ Every client installs from this repository, `artfct-dev/artfct-plugin`.
 | Hermes Agent | `hermes plugins install artfct-dev/artfct-plugin`, then `hermes plugins enable artfct` |
 | VS Code | Run **Chat: Install Plugin from Source** and enter `https://github.com/artfct-dev/artfct-plugin` |
 | Devin CLI | `devin plugins install artfct-dev/artfct-plugin` |
+| Cursor | Teams and Enterprise: **Dashboard > Plugins & MCPs > Add Marketplace > Import from Repo**, enter `https://github.com/artfct-dev/artfct-plugin`, then install it from **Customize**. |
+| Antigravity | `agy plugin install https://github.com/artfct-dev/artfct-plugin` |
 | Kiro | **Powers > Add Custom Power > Import power from a repository URL**, then enter `https://github.com/artfct-dev/artfct-plugin` |
 | Grok Build | Reads the same marketplace as Claude Code. |
 | Other [Agent Plugins clients](https://agent-plugins.org/compatible-clients) | Add `https://github.com/artfct-dev/artfct-plugin` with your client's plugin install. |
@@ -56,7 +58,7 @@ When you publish, your AI sends the artifact's files and title to your team's Ar
 
 ## For contributors
 
-This repository is the plugin. The repo root is the package, in two formats that share one `skills/` folder: [Agent Plugins 1.0.0](https://agent-plugins.org/specification) (`plugin.json`, `mcp.json`) and the Claude plugin format (`.claude-plugin/`, `.mcp.json`). It is also the source of truth for the skills, so edit them here. They came over from the Artfct app with their history, so `git log --follow` reaches back past the move. See [`AGENTS.md`](AGENTS.md) for the package rules and the checks to run before a release.
+This repository is the plugin. The repo root is the package, in two formats that share one `skills/` folder: [Agent Plugins 1.0.0](https://agent-plugins.org/specification) (`plugin.json`, `mcp.json`) and the Claude plugin format (`.claude-plugin/`, `.mcp.json`). It is also the source of truth for the skills, so edit them here. They came over from the Artfct app with their history, so `git log --follow` reaches back past the move. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the package rules and the checks to run before a release.
 
 ## License
 
