@@ -26,7 +26,10 @@ Every client installs from this repository, `artfct-dev/artfct-plugin`.
 | Claude Code | `/plugin marketplace add artfct-dev/artfct-plugin`, then `/plugin install artfct@artfct` |
 | Codex | `codex plugin marketplace add artfct-dev/artfct-plugin`, then `codex plugin add artfct@artfct` |
 | OpenClaw | `openclaw plugins install artfct --marketplace https://github.com/artfct-dev/artfct-plugin` |
-| Hermes Agent | `hermes plugins install artfct-dev/artfct-plugin --enable` |
+| Hermes Agent | `hermes plugins install artfct-dev/artfct-plugin`, then `hermes plugins enable artfct` |
+| VS Code | Run **Chat: Install Plugin from Source** and enter `https://github.com/artfct-dev/artfct-plugin` |
+| Devin CLI | `devin plugins install artfct-dev/artfct-plugin` |
+| Kiro | **Powers > Add Custom Power > Import power from a repository URL**, then enter `https://github.com/artfct-dev/artfct-plugin` |
 | Grok Build | Reads the same marketplace as Claude Code. |
 | Other [Agent Plugins clients](https://agent-plugins.org/compatible-clients) | Add `https://github.com/artfct-dev/artfct-plugin` with your client's plugin install. |
 
