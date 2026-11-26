@@ -8,7 +8,7 @@
   "plugins": [
     {
       "name": "artfct",
-      "source": "./plugins/artfct",
+      "source": "./",
       "description": "Publish what your AI makes to your team's Artfct library, and search what other agents already made."
     }
   ]
