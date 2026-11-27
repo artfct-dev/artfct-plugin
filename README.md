@@ -33,6 +33,7 @@ Every client installs from this repository, `artfct-dev/artfct-plugin`.
 | Antigravity | `agy plugin install https://github.com/artfct-dev/artfct-plugin` |
 | Kiro | **Powers > Add Custom Power > Import power from a repository URL**, then enter `https://github.com/artfct-dev/artfct-plugin` |
 | Grok Build | Reads the same marketplace as Claude Code. |
+| MausBot (OpenMausBot desktop) | Add `https://artfct.dev/mcp` as a remote (streamable HTTP) MCP server, import the 14 skills from this repo's `skills/` folder, then approve the Artfct sign-in. |
 | Other [Agent Plugins clients](https://agent-plugins.org/compatible-clients) | Add `https://github.com/artfct-dev/artfct-plugin` with your client's plugin install. |
 
 Then:

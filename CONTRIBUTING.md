@@ -37,6 +37,7 @@ Keep `.claude-plugin/` and `.mcp.json` where they are. Claude finds them only at
 - **Stay inside the package.** Every file the plugin uses lives in this repo. No symlinks out of it, and no `../` paths.
 - **Skills are flat.** Each skill is `skills/<name>/SKILL.md`, exactly one level down. Its frontmatter has a `name` equal to the directory name and a non-empty `description` ([Agent Skills spec](https://agentskills.io/specification)). Starters and references sit next to it in `assets/` and `references/`.
 - **No local runtime.** The plugin runs no commands and needs no Node, Python or binaries on the person's computer. That is why `artfct-init` is not here. The only MCP server is the hosted `https://artfct.dev/mcp`.
+- **MausBot loads it differently.** OpenMausBot desktop does not read `.claude-plugin/marketplace.json`; it registers the remote MCP server from `mcp.json` and imports the `skills/` folder. Keep the `mcp.json` URL and the `skills/<name>/SKILL.md` shape stable so that path keeps working, and read the installed version back from `version` in `plugin.json`.
 - **Skills defer to the server.** The `artfct-{publish,search,collaborate,data}` skills mirror the server's `get_guidance` topics word for word. The `onboard` skill only drives the server's onboarding steps, so the `host` values it names must be ones the server accepts. Change the server guidance first, then the skill here.
 
 ## What clients check
